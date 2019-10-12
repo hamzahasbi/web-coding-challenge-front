@@ -7,7 +7,7 @@ import {
 } from 'formik';
 import validation from '../helpers/validation';
 import '../styles/style.css';
-class Login extends React.Component {
+class Account extends React.Component {
 
     render() {
         return (
@@ -16,10 +16,11 @@ class Login extends React.Component {
                 initialValues = {
                     {
                         email: '',
-                        password: ''
+                        password: '',
+                        confirm: '',
                     }
                 }
-                validationSchema={validation.validationLogin}
+                validationSchema={validation.validationAccount}
                 onSubmit = {(values, actions) => {
                     // Send data + manage state;
                     console.log(values, actions);
@@ -35,8 +36,8 @@ class Login extends React.Component {
                         isSubmitting,
                         /* and other goodies */
                     }) => (
-                        <Form className="text-center border border-light p-5 login-form">
-                            <p className="h4 mb-4">Sign in</p>
+                        <Form onSubmit={handleSubmit} className="text-center border border-light p-5 login-form">
+                            <p className="h4 mb-4">Sign up</p>
                             <Field type="email" placeholder="Email *"
                             onChange={handleChange}
                             className="form-control mb-4"
@@ -50,13 +51,18 @@ class Login extends React.Component {
                             value={values.password}
                             className="form-control mb-4"
                             placeholder="Password *" />
-                             <ErrorMessage name="password" > 
+                            <ErrorMessage name="password" > 
                                 {msg => <div className="error-msg"> <i className="fa fa-times-circle"></i> {msg} </div>}
                             </ErrorMessage>
-                            <button className="btn btn-info btn-block my-4" type="submit">Submit </button>
-                            <h6> 
-                                <a className="text-dark" href="/">Not a member?</a>
-                            </h6>
+                            <Field type="password" onChange={handleChange} name="confirm"
+                            value={values.confirm}
+                            className="form-control mb-4"
+                            placeholder="Password confirmation *" />
+                            <ErrorMessage name="confirm" > 
+                                {msg => <div className="error-msg"> <i className="fa fa-times-circle"></i> {msg} </div>}
+                            </ErrorMessage>
+                            <button className="btn btn-info btn-block my-4" type="submit">Create </button>
+                        
                         </Form>
                         
                     )
@@ -68,4 +74,4 @@ class Login extends React.Component {
 
 }
 
-export default Login;
+export default Account;

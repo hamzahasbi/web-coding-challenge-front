@@ -35,7 +35,7 @@ class Login extends React.Component {
                         isSubmitting,
                         /* and other goodies */
                     }) => (
-                        <Form className="text-center border border-light p-5 login-form">
+                        <Form onSubmit={handleSubmit} className="text-center border border-light p-5 login-form">
                             <p className="h4 mb-4">Sign in</p>
                             <Field type="email" placeholder="Email *"
                             onChange={handleChange}
@@ -53,9 +53,9 @@ class Login extends React.Component {
                              <ErrorMessage name="password" > 
                                 {msg => <div className="error-msg"> <i className="fa fa-times-circle"></i> {msg} </div>}
                             </ErrorMessage>
-                            <button className="btn btn-info btn-block my-4" type="submit">Submit </button>
+                            <button className="btn btn-info btn-block my-4" type="submit">Log In </button>
                             <h6> 
-                                <a className="text-dark" href="/">Not a member?</a>
+                                <a className="text-dark" href="/">Not a member</a>
                             </h6>
                         </Form>
                         
