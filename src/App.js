@@ -1,26 +1,63 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
+import Header from './components/Header';
+import Routes from './helpers/routes';
+import Account from './components/Account';
+import Login from './components/Login';
+import Shop from './components/Shop';
+import PageLayout from './Layout/PageLayout';
+import Error from './Layout/Error';
 
 function App() {
+
+  const Shops = [
+    {
+      'key': 1,
+      'name': "Avito",
+      'long': 43,
+      'lat': 44,
+      'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.',
+      'image': 'http://placehold.it/700x300',
+
+    },
+    {
+      'key': 2,
+      'name': "Avitos",
+      'long': 43,
+      'lat': 44,
+      'description': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.',
+      'image': 'http://placehold.it/700x300',
+
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+      <Router>
+        <div className="container-fluid">
+          <Switch>
+            <Route exact path={Routes.APP_LOGIN.path} >
+              <Login/>
+            </Route>
+            <Route path={Routes.APP_ACCOUNT.path}>
+              <Account/>
+            </Route>
+            <Route path={Routes.APP_SHOPS.path} >
+              <PageLayout shops={Shops} name={Routes.APP_SHOPS.name} />
+            </Route>
+            <Route path={Routes.APP_PREFFERED_SHOPS.path} >
+              <PageLayout shops={Shops} name={Routes.APP_PREFFERED_SHOPS.name} />
+            </Route>
+            <Route component={Error} >
+            </Route>
+            
+        </Switch>
+        </div>
+      </Router>
+    
   );
+
 }
 
 export default App;

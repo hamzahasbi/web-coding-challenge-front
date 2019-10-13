@@ -44,14 +44,14 @@ class Login extends React.Component {
                             value={values.email} />
                         
                             <ErrorMessage name="email" > 
-                                {msg => <div className="error-msg"> <i className="fa fa-times-circle"></i> {msg} </div>}
+                                {msg => <div className="invalid-feedback"> {msg} </div>}
                             </ErrorMessage>
                             <Field type="password" onChange={handleChange} name="password"
                             value={values.password}
                             className="form-control mb-4"
                             placeholder="Password *" />
                              <ErrorMessage name="password" > 
-                                {msg => <div className="error-msg"> <i className="fa fa-times-circle"></i> {msg} </div>}
+                                {msg => <div className="invalid-feedback"> {msg} </div>}
                             </ErrorMessage>
                             <button className="btn btn-info btn-block my-4" type="submit">Log In </button>
                             <h6> 

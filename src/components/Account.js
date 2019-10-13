@@ -49,17 +49,17 @@ class Account extends React.Component {
                             </ErrorMessage>
                             <Field type="password" onChange={handleChange} name="password"
                             value={values.password}
-                            className="form-control mb-4"
+                            className="form-control mb-4 has-danger"
                             placeholder="Password *" />
-                            <ErrorMessage name="password" > 
-                                {msg => <div className="error-msg"> <i className="fa fa-times-circle"></i> {msg} </div>}
+                            <ErrorMessage className="is-invalid" name="password" > 
+                                {msg => <div className="invalid-feedback feedback"> <i className="fa fa-times-circle"></i> {msg} </div>}
                             </ErrorMessage>
                             <Field type="password" onChange={handleChange} name="confirm"
                             value={values.confirm}
                             className="form-control mb-4"
                             placeholder="Password confirmation *" />
                             <ErrorMessage name="confirm" > 
-                                {msg => <div className="error-msg"> <i className="fa fa-times-circle"></i> {msg} </div>}
+                                {msg => <div className="invalid-feedback"> {msg} </div>}
                             </ErrorMessage>
                             <button className="btn btn-info btn-block my-4" type="submit">Create </button>
                         

@@ -17,7 +17,7 @@ const validationAccount = yup.object().shape({
     password: yup
         .string()
         .required('Password is Required.'),
-    confirm: yup.string().required('Required').oneOf([yup.ref('password'), null], 'Passwords must match')
+    confirm: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
 });
 const validation = {
     'validationLogin' : validationLogin,

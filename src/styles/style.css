@@ -7,6 +7,11 @@
     background:#c1deee;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
 }
+
+.menu-style{
+  /* max-width: 400px; */
+  margin-left: 50%
+}
 .info-msg,
 .success-msg,
 .warning-msg,
@@ -30,4 +35,15 @@
 .error-msg {
   color: #D8000C;
   background-color: #FFBABA;
+}
+.feedback{
+  display: inline-block;
+  margin: 0.23rem 0.25rem;
+}
+.btn-width{
+  min-width: 100px;
+}
+.selected{
+  color: blueviolet !important;
+  font-size: 12px;
 }
