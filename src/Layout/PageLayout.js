@@ -20,11 +20,13 @@ class PageLayout extends React.Component {
                 <h1 className="my-4">{this.props.name}
                     {/* <small>Secondary Text</small> */}
                 </h1>
-                {this.props.shops.map((item, idx) => {
+                <div className="row">
+                    {this.props.shops.map((item, idx) => {
                     return (
-                        <Shop key={item.key} data={item}/>
+                        <Shop key={item.key || idx} data={item}/>
                     );
-                })}
+                    })}
+                </div>
             </div>
             </>
         );
