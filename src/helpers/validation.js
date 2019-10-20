@@ -1,7 +1,7 @@
 import * as yup from "yup"
 
 const validationLogin = yup.object().shape({
-    email: yup
+    username: yup
         .string()
         .email('Invalid Email')
         .required('Email is Required.'),

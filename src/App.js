@@ -8,6 +8,8 @@ import Login from './components/Login';
 import Shop from './components/Shop';
 import PageLayout from './Layout/PageLayout';
 import Error from './Layout/Error';
+import {Provider} from 'react-redux';
+import store from './Services/store';
 
 function App() {
 
@@ -34,6 +36,7 @@ function App() {
 
   return (
 
+    <Provider store={store}>
       <Router>
         <div className="container-fluid">
           <Switch>
@@ -55,7 +58,7 @@ function App() {
         </Switch>
         </div>
       </Router>
-    
+    </Provider>    
   );
 
 }
