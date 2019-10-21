@@ -21,7 +21,6 @@ class Shop extends React.Component {
         });
         UserService.postLikeShop(currentToken, this.props.data.id)
         .then((response) => {
-            console.log(response);
         }).catch((error) => {
             console.log(error.response);
         });
@@ -37,7 +36,6 @@ class Shop extends React.Component {
     render() {
         const data = this.props.data;
         const display = "col-md-4 " + (this.state.liked ? "d-none" : "");
-        const cookie = this.state.disliked ? 2 : 0;
         const likeClasses = this.props.preferredLyout ? 'd-none' : 'btn btn-success ml-2 btn-width';
         return (
             <>

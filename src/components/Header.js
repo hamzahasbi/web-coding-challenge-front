@@ -1,6 +1,6 @@
 import React from 'react';
 import Menu, {MenuItem} from 'rc-menu';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import PropTypes from "prop-types";
 import Routes from '../helpers/routes';
 import '../styles/style.css';
@@ -14,17 +14,32 @@ class Header extends React.Component {
         history: PropTypes.object.isRequired
     };
 
+    disconnect = () => {
+        localStorage.removeItem('token');
+        this.props.history.push('/');
+    } 
+
     navList(items, selectedKeys) {
         return items.map((item, index) => this.getItems(item, index, selectedKeys));
     }
 
+
     getItems(item, idx, selectedKeys) {
         let itemClasses = "nav-link " + (selectedKeys.includes(item.key) ? "selected" : "");
-        return (
-            <MenuItem className="nav-item" key={item.key || item.path || idx}>
-                <span><a className={itemClasses} href={item.path}>{item.name}</a></span>
+        if (item.path) {
+            return (
+                <MenuItem className="nav-item" key={item.key || item.path || idx}>
+                    <span><a className={itemClasses} href={item.path}>{item.name}</a></span>
+                </MenuItem>
+            );
+        } else {
+            return (
+            <MenuItem className="nav-item" key={item.key || idx}>
+                <span><a onClick={this.disconnect} className={itemClasses} href="/">{item.name}</a></span>
             </MenuItem>
         );
+        }
+        
     }
 
 
@@ -38,7 +53,6 @@ class Header extends React.Component {
             }
         );
         const selectedKeys = getMatchedRoute.menuMatchPath ? [getMatchedRoute.menuMatchPath.key] : [getMatchedRoute.key];
-        console.log(selectedKeys);
         return (
             <nav className="navbar navbar-expand-md navbar-light bg-light shadow" >
                 <div className="collapse navbar-collapse" id="navbarCollapse" >

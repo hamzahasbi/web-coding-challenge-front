@@ -7,6 +7,8 @@ import {
 } from 'formik';
 import validation from '../helpers/validation';
 import '../styles/style.css';
+import UserService from '../Services/UserService';
+import {withRouter} from 'react-router-dom';
 class Account extends React.Component {
 
     render() {
@@ -15,15 +17,22 @@ class Account extends React.Component {
                 <Formik 
                 initialValues = {
                     {
-                        email: '',
-                        password: '',
-                        confirm: '',
+                        email    : '',
+                        password : '',
+                        confirm   : '',
+                        longitude : '',
+                        latitude : ''
                     }
                 }
                 validationSchema={validation.validationAccount}
                 onSubmit = {(values, actions) => {
-                    // Send data + manage state;
-                    console.log(values, actions);
+                
+                    UserService.postAccountCreation(values).then((response) => {
+                        this.props.history.push('/');
+                    }).catch((error) => {
+                        this.props.history.push('error');
+                    }) ;     
+                    
                 }}> 
                 {
                     ({
@@ -44,8 +53,8 @@ class Account extends React.Component {
                             name="email"
                             value={values.email} />
                         
-                            <ErrorMessage name="email" > 
-                                {msg => <div className="error-msg"> <i className="fa fa-times-circle"></i> {msg} </div>}
+                            <ErrorMessage className="is-invalid" name="email" > 
+                                {msg => <div className="invalid-feedback feedback"> <i className="fa fa-times-circle"></i> {msg} </div>}
                             </ErrorMessage>
                             <Field type="password" onChange={handleChange} name="password"
                             value={values.password}
@@ -58,9 +67,25 @@ class Account extends React.Component {
                             value={values.confirm}
                             className="form-control mb-4"
                             placeholder="Password confirmation *" />
-                            <ErrorMessage name="confirm" > 
-                                {msg => <div className="invalid-feedback"> {msg} </div>}
+                            <ErrorMessage className="is-invalid" name="confirm" > 
+                                {msg => <div className="invalid-feedback feedback"> <i className="fa fa-times-circle"></i> {msg} </div>}
                             </ErrorMessage>
+                          
+                            {/* <Field type="text" onChange={handleChange} name="longitude"
+                            value={values.longitude}
+                            className="form-control mb-4"
+                            placeholder="Current longitude *" />
+                            <ErrorMessage className="is-invalid" name="longitude" > 
+                                {msg => <div className="invalid-feedback feedback"> <i className="fa fa-times-circle"></i> {msg} </div>}
+                            </ErrorMessage>
+                            <Field type="text" onChange={handleChange} name="latitude"
+                            value={values.latitude}
+                            className="form-control mb-4"
+                            placeholder="Current latitude *" />
+                            <ErrorMessage name="latitude" > 
+                                {msg => <div className="invalid-feedback"> {msg} </div>}
+                            </ErrorMessage> */}
+                        
                             <button className="btn btn-info btn-block my-4" type="submit">Create </button>
                         
                         </Form>
@@ -74,4 +99,4 @@ class Account extends React.Component {
 
 }
 
-export default Account;
+export default withRouter(Account);
