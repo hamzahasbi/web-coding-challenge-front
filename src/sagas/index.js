@@ -12,7 +12,7 @@ function* getUser({ payload: { username, password } }) {
 
     } catch (error) {
         let message;
-        switch (error.status) {
+        switch (error.response.status) {
             case 500: message = 'Internal Server Error'; break;
             case 401: message = 'Invalid credentials'; break;
             default: message = 'Something went wrong';
