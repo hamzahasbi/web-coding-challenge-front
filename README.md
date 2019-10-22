@@ -24,6 +24,7 @@ Your app is ready to be deployed!
  
  - [x] Login.
  - [x] Sign up for an account.
+ - [x]  - [x] Get dynamic user coordinates.
  - [x] Get sorted list a nearby shops.
  - [x] Like a specific shop.
  - [x] Get the list of like shops.
@@ -33,11 +34,11 @@ Your app is ready to be deployed!
 At this point we still have some buggy/incomplete features :
  - [ ] Dislike shops.
  - [ ] Pagination or Infinite scrolling loader.
- - [ ] Get dynamic user coordinates.
  - [ ] remove a shop from liked shops list.
  - [ ] Dislike a Shop.
  - [ ] Refactoring.
  - [ ] Securing token exchange.
+ - [ ] Improving UX.
  - [ ] Unit Tests. 
 ## Contributor
  - Hamza Hasbi [hamza.hasbi@gmail.com](mailto:hamza.hasbi@gmail.com)
