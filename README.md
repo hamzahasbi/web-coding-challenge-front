@@ -1,6 +1,6 @@
 # Web Coding Challenge Front
 
-This repository represent the [Single page app](https://fr.wikipedia.org/wiki/Application_web_monopage) responsible of consuming the [Web Coding Challenge API](https://www.youtube.com/watch?v=-KOKtk83t3g).
+This repository represent the [Single page app](https://fr.wikipedia.org/wiki/Application_web_monopage) responsible of consuming the [Web Coding Challenge API](https://github.com/hamzahasbi/web-coding-challenge-back)
 
 ## About 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -24,7 +24,7 @@ Your app is ready to be deployed!
  
  - [x] Login.
  - [x] Sign up for an account.
- - [x]  - [x] Get dynamic user coordinates.
+ - [x] Get dynamic user coordinates.
  - [x] Get sorted list a nearby shops.
  - [x] Like a specific shop.
  - [x] Get the list of like shops.
@@ -38,6 +38,7 @@ At this point we still have some buggy/incomplete features :
  - [ ] Dislike a Shop.
  - [ ] Refactoring.
  - [ ] Securing token exchange.
+ - [ ] LazyLoad components.
  - [ ] Improving UX.
  - [ ] Unit Tests. 
 ## Contributor
