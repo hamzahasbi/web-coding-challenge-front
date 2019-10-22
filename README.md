@@ -25,7 +25,7 @@ Your app is ready to be deployed!
  - [x] Login.
  - [x] Sign up for an account.
  - [x] Get dynamic user coordinates.
- - [x] Get sorted list a nearby shops.
+ - [x] Get sorted list of nearby shops.
  - [x] Like a specific shop.
  - [x] Get the list of like shops.
  - [x] Log out.
