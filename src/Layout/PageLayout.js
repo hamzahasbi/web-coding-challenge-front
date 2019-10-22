@@ -25,7 +25,6 @@ class PageLayout extends React.Component {
             'error'   : '', 
             'status'  : '',
             'liked'   : this.props.location.pathname !== '/shops',
-            'hasMore' : false,
         };
     }
 
@@ -77,7 +76,7 @@ class PageLayout extends React.Component {
     render() {
         const h1 = this.state.liked ? 'Preffered Shops' : 'Listing of Shops';
         const loading = this.state.loading;
-        if (this.state.error !== '') return <Redirect to='/' />
+        if (this.state.error !== '') return <Redirect to='/error' />
         return(
             <>
             <Header items={items}/>

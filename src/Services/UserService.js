@@ -11,8 +11,12 @@ class UserService {
         const options = {
             'headers' : {'Authorization': 'Bearer ' + token}
         }
+        const coordinates = {
+            longitude: localStorage.getItem('longitude'),
+             latitude: localStorage.getItem('latitude')
+        };
         const endPoint = "http://localhost:80" + (likedLayout ? '/api/shops/liked' : '/api/shops');
-        return axios.get(endPoint, options);
+        return likedLayout ? axios.get(endPoint, options) : axios.post(endPoint, coordinates, options);
     }  
 
     static postLikeShop(token, shopId) {

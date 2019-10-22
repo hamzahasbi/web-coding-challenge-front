@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import PropTypes from "prop-types";
 import Routes from '../helpers/routes';
 import '../styles/style.css';
+import UserService from '../Services/UserService';
 
 
 class Header extends React.Component {
@@ -14,10 +15,6 @@ class Header extends React.Component {
         history: PropTypes.object.isRequired
     };
 
-    disconnect = () => {
-        localStorage.removeItem('token');
-        this.props.history.push('/');
-    } 
 
     navList(items, selectedKeys) {
         return items.map((item, index) => this.getItems(item, index, selectedKeys));
@@ -35,7 +32,7 @@ class Header extends React.Component {
         } else {
             return (
             <MenuItem className="nav-item" key={item.key || idx}>
-                <span><a onClick={this.disconnect} className={itemClasses} href="/">{item.name}</a></span>
+                <span><a onClick={() => {UserService.disconnectUser(401)}} href="/" className={itemClasses} >{item.name}</a></span>
             </MenuItem>
         );
         }

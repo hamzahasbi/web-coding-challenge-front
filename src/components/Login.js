@@ -7,9 +7,10 @@ import {
 } from 'formik';
 import validation from '../helpers/validation';
 import '../styles/style.css';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { login } from '../actions';
+import Routes from '../helpers/routes';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -17,9 +18,15 @@ const mapDispatchToProps = dispatch => {
     sign_in: (credentials) => dispatch(login(credentials)),
   }
 }
+
+const token = localStorage.getItem('token');
+
 class Login extends React.Component {
 
     render() {
+        if (token !== undefined && token !== null) {
+            return <Redirect to='/shops'/>
+        }
         return (
             <div>
                 <Formik 
@@ -31,9 +38,7 @@ class Login extends React.Component {
                 }
                 validationSchema={validation.validationLogin}
                 onSubmit = {(values, actions) => {
-                    this.props.sign_in(values);
-                    
-                    console.log(this.props);
+                    this.props.sign_in(values); 
                 }}> 
                 {
                     ({
@@ -54,19 +59,19 @@ class Login extends React.Component {
                             name="username"
                             value={values.username} />
                         
-                            <ErrorMessage name="username" > 
-                                {msg => <div className="invalid-feedback"> {msg} </div>}
+                            <ErrorMessage className="is-invalid" name="username" > 
+                                {msg => <div className="invalid-feedback feedback"> <i className="fa fa-times-circle"></i> {msg} </div>}
                             </ErrorMessage>
                             <Field type="password" onChange={handleChange} name="password"
                             value={values.password}
                             className="form-control mb-4"
                             placeholder="Password *" />
-                             <ErrorMessage name="password" > 
-                                {msg => <div className="invalid-feedback"> {msg} </div>}
+                            <ErrorMessage className="is-invalid" name="password" > 
+                                {msg => <div className="invalid-feedback feedback"> <i className="fa fa-times-circle"></i> {msg} </div>}
                             </ErrorMessage>
                             <button className="btn btn-info btn-block my-4" type="submit">Log In </button>
                             <h6> 
-                                <a className="text-dark" href="/">Not a member</a>
+                                <a className="text-dark" href={Routes.APP_ACCOUNT.path}>Not a member</a>
                             </h6>
                         </Form>
                         
@@ -79,9 +84,5 @@ class Login extends React.Component {
 
 }
 
-const mapStateToProps = (state) => ({
-  token: state.auth.token,
-  status: state.auth.error
-});
 
 export default connect(null, mapDispatchToProps)(withRouter(Login));
