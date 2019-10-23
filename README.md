@@ -34,8 +34,7 @@ Your app is ready to be deployed!
 At this point we still have some buggy/incomplete features :
  - [ ] Dislike shops.
  - [ ] Pagination or Infinite scrolling loader.
- - [ ] remove a shop from liked shops list.
- - [ ] Dislike a Shop.
+ - [ ] Remove a shop from liked shops list.
  - [ ] Refactoring.
  - [ ] Securing token exchange.
  - [ ] LazyLoad components.
