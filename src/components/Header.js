@@ -1,7 +1,6 @@
 import React from 'react';
 import Menu, {MenuItem} from 'rc-menu';
 import {withRouter} from 'react-router-dom';
-import PropTypes from "prop-types";
 import Routes from '../helpers/routes';
 import '../styles/style.css';
 import UserService from '../Services/UserService';
@@ -9,11 +8,6 @@ import UserService from '../Services/UserService';
 
 class Header extends React.Component {
 
-    static propTypes = {
-        match: PropTypes.object.isRequired,
-        location: PropTypes.object.isRequired,
-        history: PropTypes.object.isRequired
-    };
 
 
     navList(items, selectedKeys) {

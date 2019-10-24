@@ -31,6 +31,14 @@ class UserService {
         return axios.post("http://localhost:80/api/sign_up", userData);
     }
 
+    static deleteShopfromList(token, shopId) {
+        const options = {
+            'headers' : {'Authorization': 'Bearer ' + token},
+            'data' : {'shop' : parseInt(shopId)}
+        }
+        return axios.delete("http://localhost:80/api/shop/dislike", options);
+    }
+
     static disconnectUser(status) {
         if (parseInt(status) === 401) localStorage.removeItem('token');
     }

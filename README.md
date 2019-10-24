@@ -26,6 +26,7 @@ Your app is ready to be deployed!
  - [x] Sign up for an account.
  - [x] Get dynamic user coordinates.
  - [x] Get sorted list of nearby shops.
+ - [x] Remove a shop from liked shops list.
  - [x] Like a specific shop.
  - [x] Get the list of like shops.
  - [x] Log out.
@@ -34,7 +35,6 @@ Your app is ready to be deployed!
 At this point we still have some buggy/incomplete features :
  - [ ] Dislike shops.
  - [ ] Pagination or Infinite scrolling loader.
- - [ ] Remove a shop from liked shops list.
  - [ ] Refactoring.
  - [ ] Securing token exchange.
  - [ ] LazyLoad components.

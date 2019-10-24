@@ -4,7 +4,6 @@ import '../styles/errors.css';
 import {withRouter} from 'react-router-dom';
 import Routes from '../helpers/routes';
 function Loading() {
-            console.log(localStorage.getItem('token'));
 
     return (
         <>

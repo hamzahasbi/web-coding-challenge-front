@@ -15,27 +15,32 @@ class Shop extends React.Component {
 
     like = (e) => {
         e.preventDefault();
-        this.setState({
-            liked: true,
-            disliked: false
-        });
         UserService.postLikeShop(currentToken, this.props.data.id)
         .then((response) => {
+            this.setState({
+                liked: true,
+                disliked: false
+            });
         }).catch((error) => {
-            console.log(error.response);
         });
 
     };
     dislike = (e) => {
         e.preventDefault();
-        this.setState({
-            liked: false,
-            disliked: true
-        })
+        UserService.deleteShopfromList(currentToken, this.props.data.id)
+        .then((response) => {
+            this.setState({
+                liked: false,
+                disliked: true
+            });
+
+        }).catch((error) => {
+        });
     };
     render() {
         const data = this.props.data;
-        const display = "col-md-4 " + (this.state.liked ? "d-none" : "");
+        const toHide = this.state.liked || (this.props.preferredLyout && this.state.disliked);
+        const display = "col-md-4 " + ( toHide ? "d-none" : "");
         const likeClasses = this.props.preferredLyout ? 'd-none' : 'btn btn-success ml-2 btn-width';
         return (
             <>
